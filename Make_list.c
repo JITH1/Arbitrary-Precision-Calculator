@@ -145,21 +145,19 @@ void remove_pre_zeros(node **head)
 
 }
 
-void print_list(node *head)
+void print_list(node *head,char sign)
 {
-    printf("\nHead -> ");
+    if(sign == '+')
+    printf("+");
+    else if(sign == '-')
+    printf("-");
 
     while(head!=NULL)
     {
-        printf("%d ",head->value);
+        printf("%d",head->value);
         head = head->next;
-
-        if(head)
-        {
-           printf("-> ");
-        }
     }
 
-    printf("<- Tail\n");
+    printf("\n");
 
 }
