@@ -10,6 +10,7 @@ void insert_at_last(node **head, node **tail, int data)
         *head = temp;
         temp->prev = NULL;
         temp->next = NULL;
+        *tail = temp;
 
         return;
     }
@@ -27,6 +28,7 @@ void insert_at_last(node **head, node **tail, int data)
     temp2->next = NULL;
 
     temp2->value = data ;
+    *tail = temp2 ;
 
 }
 
@@ -46,7 +48,79 @@ void create_list(char *operand, node **head, node **tail)
         i++;
     }
     
-}   
+}
+
+void Insert_first(int data , node **head, node **tail)
+{
+    if(*head == NULL)
+    {
+        node *temp = malloc(sizeof(node));
+        temp->value = data ;
+        temp->prev = NULL;
+        temp->next = NULL;
+        *head = temp ;
+        *tail = temp ;
+        return ;
+    }
+    
+    node *temp = malloc(sizeof(node));
+    temp->value = data ;
+    temp->prev = NULL;
+    temp->next = *head;
+    *head = temp;
+
+    return ;
+}
+
+Compare comp_operands(node *head_op1,node *head_op2)
+{
+    int digits1 = 0 , digits2 = 0;
+    
+    node *temp = head_op1;
+
+    while(temp!=NULL)
+    {
+        digits1++;
+        temp = temp->next;
+    }
+
+    temp = head_op2;
+    
+    while(temp!=NULL)
+    {
+        digits2++;
+        temp = temp->next;
+    }
+
+    if(digits1 > digits2)
+    {
+        return OPERAND1 ;
+    }
+    else if(digits2 > digits1)
+    {
+        return OPERAND2 ;
+    }
+    else if (digits1 == digits2)
+    {
+        while(head_op1!=NULL)
+        {
+            if(head_op1->value > head_op2->value)
+            {
+                return OPERAND1;
+            }
+            else if(head_op2->value > head_op1->value)
+            {
+                return OPERAND2 ;
+            }
+
+            head_op1 = head_op1->next;
+            head_op2 = head_op2->next;
+        }
+
+        return SAME ;
+    }
+
+}
 
 void remove_pre_zeros(node **head)
 {

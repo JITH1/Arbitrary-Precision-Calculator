@@ -32,6 +32,7 @@ typedef struct
 }node;
 
 Status validate_command_line_arg(int argc,char *argv[]);
+Compare comp_operands(node *head_op1,node *head_op2);
 
 #endif
 

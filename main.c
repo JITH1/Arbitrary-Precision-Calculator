@@ -28,7 +28,11 @@ int main(int argc,char *argv[])
         printf(RED"\nArgument Validation Failed...!\n"RESET);
         return FAILED;
     }
+    
+    int n = comp_operands(head_op1,head_op2) ;
 
+    (n == OPERAND1 ) ? printf("Op 1 > Op2\n") : (n == OPERAND2) ? printf("Op 2 > Op1\n") : printf("Both Operands are same\n") ;
+    
     print_list(head_op1);
     print_list(head_op2);
 
