@@ -46,6 +46,29 @@ void create_list(char *operand, node **head, node **tail)
         i++;
     }
     
+}   
+
+void remove_pre_zeros(node **head)
+{
+    node *temp1 = *head ;
+
+    node *temp2 = *head ;
+
+    while(temp1->value == 0 && temp1->next!= NULL)
+    {
+        temp1 = temp1->next ;
+    }
+
+    while(temp2!=temp1)
+    {
+        node *delete = temp2 ;
+        temp2 = temp2->next;
+        free(delete);
+    } 
+
+    *head = temp2 ;
+    temp2->prev = NULL ;
+
 }
 
 void print_list(node *head)

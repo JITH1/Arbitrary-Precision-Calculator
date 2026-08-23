@@ -19,6 +19,8 @@ int main(int argc,char *argv[])
         
         create_list(argv[1],&head_op1,&tail_op1);
         create_list(argv[3],&head_op2,&tail_op2);
+        remove_pre_zeros(&head_op1);
+        remove_pre_zeros(&head_op2);
      
     }
     else

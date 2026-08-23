@@ -6,5 +6,6 @@
 void create_list(char *operand, node **head, node **tail);
 void insert_at_last(node **head, node **tail, int data);
 void print_list(node *head);
+void remove_pre_zeros(node **head);
 
 #endif
