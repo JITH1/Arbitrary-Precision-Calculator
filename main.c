@@ -86,21 +86,59 @@ int main(int argc,char *argv[])
     }
     else if(argv[2][0] == '-')
     {
-        if(n == OPERAND1)
+        if(n == OPERAND1 || n == SAME)
         {
-            substraction_operation(&head_op1,&tail_op1,&head_op2,&tail_op2,&head_res,&tail_res);
+            
+            if((argv[1][0] == '-') && (argv[3][0] == '-'))
+            {
+                sign = '-';
+                substraction_operation(&head_op1,&tail_op1,&head_op2,&tail_op2,&head_res,&tail_res);
+            }
+            else if((argv[1][0] == '+' || argv[1][0] != '+') && argv[3][0] == '-')
+            {
+                sign  = '+';
+                addition_operation(&head_op1,&tail_op1,&head_op2,&tail_op2,&head_res,&tail_res);
+            }
+            else if((argv[1][0] == '-') && (argv[3][0] == '+' || argv[3][0] != '+'))
+            {
+                sign = '-';
+                addition_operation(&head_op1,&tail_op1,&head_op2,&tail_op2,&head_res,&tail_res);  
+            }
+            else 
+            {
+                sign = '+';
+                substraction_operation(&head_op1,&tail_op1,&head_op2,&tail_op2,&head_res,&tail_res);
+            }
+            
         }
         else if(n == OPERAND2)
         {
-            substraction_operation(&head_op2,&tail_op2,&head_op1,&tail_op1,&head_res,&tail_res);
+            if((argv[1][0] == '-') && (argv[3][0] == '-'))
+            {
+                sign = '+';
+                substraction_operation(&head_op2,&tail_op2,&head_op1,&tail_op1,&head_res,&tail_res);
+            }
+            else if((argv[1][0] == '+' || argv[1][0] != '+') && argv[3][0] == '-')
+            {
+                sign  = '+';
+                addition_operation(&head_op2,&tail_op2,&head_op1,&tail_op1,&head_res,&tail_res);
+            }
+            else if((argv[1][0] == '-') && (argv[3][0] == '+' || argv[3][0] != '+'))
+            {
+                sign = '-';
+                addition_operation(&head_op2,&tail_op2,&head_op1,&tail_op1,&head_res,&tail_res);  
+            }
+            else 
+            {
+                sign = '-';
+                substraction_operation(&head_op2,&tail_op2,&head_op1,&tail_op1,&head_res,&tail_res);
+            }
         }
-        else 
-        {
-            substraction_operation(&head_op1,&tail_op1,&head_op2,&tail_op2,&head_res,&tail_res);
-        }
+        
     }
     
-    printf(YELLOW"\n\n--------------------------------------------------------------------------\n");
+    printf(YELLOW"\n\n   Operation : %s",argv[2]);
+    printf("\n--------------------------------------------------------------------------\n");
     printf("|  Operand 1 : %-56s  |\n",argv[1]);
     printf("--------------------------------------------------------------------------\n");
     printf("|  Operand 2 : %-56s  |\n",argv[3]);        
