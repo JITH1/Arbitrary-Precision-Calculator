@@ -67,6 +67,7 @@ void Insert_first(int data , node **head, node **tail)
     temp->value = data ;
     temp->prev = NULL;
     temp->next = *head;
+    (*head)->prev = temp;
     *head = temp;
 
     return ;
@@ -142,6 +143,22 @@ void remove_pre_zeros(node **head)
 
     *head = temp2 ;
     temp2->prev = NULL ;
+
+}
+
+void delete_list(node **head,node **tail)
+{
+    node *temp = *head;
+
+    while(*head!=NULL)
+    {
+        *head = (*head)->next;
+        free(temp);
+        temp = *head;
+    }
+
+    *head = NULL;
+    *tail = NULL;
 
 }
 

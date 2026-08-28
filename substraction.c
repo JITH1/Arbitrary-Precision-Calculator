@@ -1,7 +1,7 @@
 #include "APC.h"
 #include "Make_List.h"
 
-int substraction_operation(node **head_op1,node **tail_op1,node **head_op2,node **tail_op2,node **head_res,node **tail_res)
+void substraction_operation(node **head_op1,node **tail_op1,node **head_op2,node **tail_op2,node **head_res,node **tail_res)
 {
     node *temp1 = *tail_op1;
     node *temp2 = *tail_op2;
@@ -56,5 +56,4 @@ int substraction_operation(node **head_op1,node **tail_op1,node **head_op2,node 
 
     remove_pre_zeros(head_res);
     
-    return SUCCESS ;
 }
