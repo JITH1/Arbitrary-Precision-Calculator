@@ -1,8 +1,8 @@
 CC = gcc
 CFLAGS = -Wall -Wextra
 
-apc : main.o Make_list.o List.o addition.o substraction.o Multiplication.o 
-	$(CC) $(CFLAGS) main.o Make_list.o List.o addition.o substraction.o Multiplication.o  -o apc
+apc : main.o Make_list.o List.o addition.o substraction.o Multiplication.o Division.o 
+	$(CC) $(CFLAGS) main.o Make_list.o List.o addition.o substraction.o Multiplication.o Division.o  -o apc
 main.o : main.c APC.h Make_List.h 
 	$(CC) $(CFLAGS) -c main.c 
 Make_list.o : Make_list.c APC.h Make_List.h
@@ -15,6 +15,8 @@ substraction.o : substraction.c APC.h Make_List.h
 	$(CC) $(CFLAGS) -c substraction.c
 Multiplication.o : Multiplication.c APC.h Make_List.h
 	$(CC) $(CFLAGS) -c Multiplication.c
+Division.o : Division.c APC.h Make_List.h
+	$(CC) $(CFLAGS) -c Division.c
 
 clean :
 	rm -f *.o apc 

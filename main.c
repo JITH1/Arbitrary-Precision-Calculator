@@ -34,19 +34,19 @@ int main(int argc,char *argv[])
 
     if(argv[2][0] == '+')
     {
-        if((n == OPERAND1 || n == SAME ))
+        if(n == OPERAND1 || n == SAME )
         {
-            if((argv[1][0] == '+' || argv[3][0] == '+') || (argv[1][0] != '+' || argv[3][0] != '+'))
+            if((argv[1][0] == '+' || argv[3][0] == '+') || (argv[1][0] != '-' || argv[3][0] != '-'))
             {
                 sign = '+';
                 addition_operation(&head_op1,&tail_op1,&head_op2,&tail_op2,&head_res,&tail_res);
             }
-            else if(argv[1][0] == '-' && (argv[3][0] == '+' || argv[3][0] != '+'))
+            else if(argv[1][0] == '-' && (argv[3][0] == '+' || argv[3][0] != '-'))
             {
                 sign = '-';
                 substraction_operation(&head_op1,&tail_op1,&head_op2,&tail_op2,&head_res,&tail_res);
             }
-            else if((argv[1][0] == '+' || argv[1][0] != '+') && argv[3][0] == '-')
+            else if((argv[1][0] == '+' || argv[1][0] != '-') && argv[3][0] == '-')
             {
                 sign = '+';
                 substraction_operation(&head_op1,&tail_op1,&head_op2,&tail_op2,&head_res,&tail_res);
@@ -60,17 +60,17 @@ int main(int argc,char *argv[])
         }
         else if(n == OPERAND2)
         {
-            if((argv[1][0] == '+' || argv[3][0] == '+') || (argv[1][0] != '+' || argv[3][0] != '+'))
+            if((argv[1][0] == '+' || argv[3][0] == '+') || (argv[1][0] != '-' || argv[3][0] != '-'))
             {
                 sign = '+';
                 addition_operation(&head_op2,&tail_op2,&head_op1,&tail_op1,&head_res,&tail_res);
             }
-            else if(argv[1][0] == '-' && (argv[3][0] == '+' || argv[3][0] != '+'))
+            else if(argv[1][0] == '-' && (argv[3][0] == '+' || argv[3][0] != '-'))
             {
                 sign = '+';
                 substraction_operation(&head_op2,&tail_op2,&head_op1,&tail_op1,&head_res,&tail_res);
             }
-            else if((argv[1][0] == '+' || argv[1][0] != '+') && argv[3][0] == '-')
+            else if((argv[1][0] == '+' || argv[1][0] != '-') && argv[3][0] == '-')
             {
                 sign = '-';
                 substraction_operation(&head_op2,&tail_op2,&head_op1,&tail_op1,&head_res,&tail_res);
@@ -143,47 +143,71 @@ int main(int argc,char *argv[])
             if((argv[1][0] == '-') && (argv[3][0] == '-'))
             {
                 sign = '+';
-                multiplication_operation(&head_op1,&tail_op1,&head_op2,&tail_op2,&head_res,&tail_res);
             }
             else if((argv[1][0] == '+' || argv[1][0] != '+') && argv[3][0] == '-')
             {
                 sign  = '-';
-                multiplication_operation(&head_op1,&tail_op1,&head_op2,&tail_op2,&head_res,&tail_res);
             }
             else if((argv[1][0] == '-') && (argv[3][0] == '+' || argv[3][0] != '+'))
             {
                 sign = '-';
-                multiplication_operation(&head_op1,&tail_op1,&head_op2,&tail_op2,&head_res,&tail_res);  
             }
             else 
             {
                 sign = '+';
-                multiplication_operation(&head_op1,&tail_op1,&head_op2,&tail_op2,&head_res,&tail_res);
             }
+
+            multiplication_operation(&head_op1,&tail_op1,&head_op2,&tail_op2,&head_res,&tail_res);
         }
         else if(n == OPERAND2)
         {
             if((argv[1][0] == '-') && (argv[3][0] == '-'))
             {
                 sign = '+';
-                multiplication_operation(&head_op2,&tail_op2,&head_op1,&tail_op1,&head_res,&tail_res);
             }
             else if((argv[1][0] == '+' || argv[1][0] != '+') && argv[3][0] == '-')
             {
                 sign  = '-';
-                multiplication_operation(&head_op2,&tail_op2,&head_op1,&tail_op1,&head_res,&tail_res);
             }
             else if((argv[1][0] == '-') && (argv[3][0] == '+' || argv[3][0] != '+'))
             {
                 sign = '-';
-                multiplication_operation(&head_op2,&tail_op2,&head_op1,&tail_op1,&head_res,&tail_res);  
-            }
+            }    
             else 
             {
                 sign = '+';
-                multiplication_operation(&head_op2,&tail_op2,&head_op1,&tail_op1,&head_res,&tail_res);
             }
+
+            multiplication_operation(&head_op2,&tail_op2,&head_op1,&tail_op1,&head_res,&tail_res);
         }
+
+    }
+    else if(argv[2][0] == '/')
+    {
+
+           if((argv[1][0] == '-') && (argv[3][0] == '-'))
+            {
+                sign = '+';
+            }
+            else if((argv[1][0] == '+' || argv[1][0] != '+') && argv[3][0] == '-')
+            {
+                sign  = '-';
+            }
+            else if((argv[1][0] == '-') && (argv[3][0] == '+' || argv[3][0] != '+'))
+            {
+                sign = '-';
+            }    
+            else 
+            {
+                sign = '+';
+            }
+
+           if(!division_operation(&head_op1,&tail_op1,&head_op2,&tail_op2,&head_res,&tail_res))
+           {
+                printf(RED"\nDivision Operation Failed...!\n\n"RESET);
+                return FAILED ;
+           }
+
     }
     
     printf(YELLOW"\n\n   Operation : %s",argv[2]);

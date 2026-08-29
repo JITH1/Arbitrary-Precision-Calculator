@@ -125,6 +125,9 @@ Compare comp_operands(node *head_op1,node *head_op2)
 
 void remove_pre_zeros(node **head)
 {
+    if(*head == NULL)
+    return;
+ 
     node *temp1 = *head ;
 
     node *temp2 = *head ;
