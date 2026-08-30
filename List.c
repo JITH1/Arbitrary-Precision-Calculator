@@ -16,7 +16,13 @@ Status validate_command_line_arg(int argc,char *argv[])
     if(!(argv[1][0] == '+' || argv[1][0] == '-'))
     {
 
-        int i = 0 ;
+        int i = 1 ;
+
+        if(argv[1][i] == '\0')
+        {
+            printf(RED"\nInvalid Operand...!\n");
+            return FAILED;
+        } 
 
         while(argv[1][i] != '\0')
         {
