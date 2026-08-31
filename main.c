@@ -219,6 +219,8 @@ int main(int argc,char *argv[])
     printf("     Result  :  ");   
     print_list(head_res,sign);
     printf("\n");
+
+    delete_list(&head_res,&tail_res);
     
     return 0;
 
